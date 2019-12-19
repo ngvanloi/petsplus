@@ -1,0 +1,29 @@
+<html>
+  <body>
+    <h2>CHECKOUT</h2>
+
+    <form action="/checkout" method="POST">
+      Customer name <% if(session.customer) {%>
+
+      <input
+        type="text"
+        name="txtCustName"
+        value="<%= session.customer.name  %>"
+        required
+      /><br />
+      Customer phone
+      <input
+        type="text"
+        name="txtCustPhone"
+        value="<%= session.customer.phone %>"
+        required
+      /><br />
+      <% } else {%>
+      <input type="text" name="txtCustName" required /><br />
+      Customer phone
+      <input type="text" name="txtCustPhone" required /><br />
+      <% } %>
+      <input type="submit" value="SUBMIT" />
+    </form>
+  </body>
+</html>

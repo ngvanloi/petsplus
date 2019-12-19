@@ -1,0 +1,25 @@
+<html>
+  <body>
+    <h2>PRODUCT DETAILS</h2>
+    <table>
+      <tr>
+        <td>
+          <img
+            src="data:image/jpg;base64,<%= toy.image %>"
+            width="400"
+            height="400"
+          />
+        </td>
+        <td>
+          <%= toy.name %><br />
+          <%= toy.price %><br />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">Mô tả : <%= toy.description %><br /></td>
+      </tr>
+    </table>
+
+    <a href="/admin/listtoy">Back to list</a>
+  </body>
+</html>

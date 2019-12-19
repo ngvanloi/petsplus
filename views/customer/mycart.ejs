@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <%- include("../partials/head.ejs") %>
+  </head>
+  <body>
+    <header>
+      <%- include("../partials/header.ejs") %>
+    </header>
+    <h2>ITEM LIST</h2>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Amount</th>
+        <th>Action</th>
+      </tr>
+      <% var total = 0; for (var item of session.mycart) { total +=
+      item.toy.price * item.quantity; %>
+      <tr>
+        <td><%= item.toy._id %></td>
+        <td><%= item.toy.name %></td>
+        <td>
+          <img
+            src="data:image/jpg;base64,<%= item.toy.image %>"
+            width="70"
+            height="70"
+          />
+        </td>
+        <td><%= item.toy.price %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.toy.price * item.quantity %></td>
+        <td><a href="/remove2cart/<%= item.toy._id %>">Remove</a></td>
+      </tr>
+      <% } %>
+    </table>
+
+    <h3>Total = <%= total %></h3>
+    <a href="/checkout">CHECKOUT</a>
+
+    <footer>
+      <%- include("../partials/footer.ejs") %>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<html>
+
+<head>
+  <%- include("../partials/head.ejs") %>
+</head>
+
+<body>
+  <header>
+    <%- include("../partials/header.ejs") %>
+  </header>
+
+  </div>
+  <div class="container">
+
+
+
+    <table align="center">
+      <h3>Dog</h3>
+      <% var nCols = 3; var nRows = Math.ceil(dogs.length / nCols); for (var r =
+      0; r < nRows; r++) { %>
+      <tr>
+        <% for (var c = 0; c < nCols; c++) { if (r * nCols + c < dogs.length) {
+        var dog = dogs[r * nCols + c]; %>
+        <td align="center">
+          <a href="/viewtoy/<%= dog._id %>">
+            <img src="data:image/jpg;base64,<%= dog.image %>" width="300" height="300" /><br />
+          </a>
+          <%= dog.name %><br />
+          <%= dog.price %><br />
+        </td>
+        <% } } %>
+      </tr>
+      <% } %>
+    </table>
+
+    <table align="center">
+      <h3>Cat</h3>
+      <% var nCols = 3; var nRows = Math.ceil(cats.length / nCols); for (var r =
+      0; r < nRows; r++) { %>
+      <tr>
+        <% for (var c = 0; c < nCols; c++) { if (r * nCols + c < cats.length) {
+        var cat = cats[r * nCols + c]; %>
+        <td align="center">
+          <a href="/viewtoy/<%= cat._id %>">
+            <img src="data:image/jpg;base64,<%= cat.image %>" width="300" height="300" /><br />
+          </a>
+          <%= cat.name %><br />
+          <%= cat.price %><br />
+        </td>
+        <% } } %>
+      </tr>
+      <% } %>
+    </table>
+
+
+
+
+    <table align="center" border="1">
+      <h3>NEWS</h3>
+      <% for(var item of news) { %>
+      <div class="w3-card-4" style="width:70%;margin: 0 auto;">
+        <a href="/viewnews/<%= item._id %>">
+          <img src="data:image/jpg;base64,<%= item.image %>" width="500px" alt="Alps" style="width:100%">
+          <div class="w3-container w3-center">
+            <p align="center" style="font-size: 40px;"><%= item.title %></p>
+          </div>
+        </a>
+      </div>
+
+      <% } %>
+    </table>
+
+    <!-- Footer -->
+    <footer>
+      <%- include("../partials/footer.ejs") %>
+    </footer>
+
+
+</body>
+
+</html>

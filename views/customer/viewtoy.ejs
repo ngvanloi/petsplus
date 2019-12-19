@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <%- include("../partials/head.ejs") %>
+  </head>
+  <body>
+    <header>
+      <%- include("../partials/header.ejs") %>
+    </header>
+    <h2><%= toy.name %></h2>
+    <table>
+      <tr>
+        <td>
+          <img
+            src="data:image/jpg;base64,<%= toy.image %>"
+            width="400"
+            height="400"
+          />
+        </td>
+        <td style="padding-left: 150px;">
+          <h3><%= toy.price %> VND</h3>
+          <br />
+          <form action="/add2cart" method="POST">
+            <input type="hidden" name="txtID" value="<%= toy._id %>" />
+            <input
+              type="number"
+              name="txtQuantity"
+              min="0"
+              value="1"
+              style="margin: 10px 0;width: 75px;text-align: center;"
+            /><br />
+            <input type="submit" value="ADD TO CART" />
+          </form>
+          <%= toy.description %>
+        </td>
+      </tr>
+    </table>
+
+    <footer>
+      <%- include("../partials/footer.ejs") %>
+    </footer>
+  </body>
+</html>

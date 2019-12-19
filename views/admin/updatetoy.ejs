@@ -1,0 +1,45 @@
+<html>
+  <body>
+    <form action="../updatetoy" method="POST" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td><input type="hidden" name="txtId" value="<%= toy._id %>" /></td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td><input type="text" name="txtName" value="<%= toy.name %>" /></td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>
+            <input type="text" name="txtPrice" value="<%= toy.price %>" />
+          </td>
+        </tr>
+        <tr>
+          <td>Image</td>
+          <td>
+            <input type="file" name="fileImage" required />
+          </td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>
+            <textarea rows="4" cols="50" name="txtDescription">
+                <%= toy.description %>
+            </textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>Animal</td>
+          <td>
+            <input type="text" name="txtAnimal" value="<%= toy.animal %>" />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="Edit" /></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

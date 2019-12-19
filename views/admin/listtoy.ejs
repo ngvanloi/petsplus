@@ -1,0 +1,101 @@
+<html>
+  <body>
+    <table style="margin: auto">
+      <tr>
+        <td align="center" style="padding-top: 20">
+          <h2>Toys LIST</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table
+            style="text-align: center; border-collapse: collapse"
+            border="1"
+          >
+            <tr bgcolor="#fc0">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th></th>
+            </tr>
+            <% for (var item of toys) { %>
+            <tr>
+              <th>
+                <a href="/admin/detail/<%= item._id%>">
+                  <%= item._id%>
+                </a>
+              </th>
+              <td><%= item.name%></td>
+              <td>
+                <img
+                  src="data:image/jpg;base64,<%=item.image%>"
+                  width="100"
+                  height="100"
+                />
+              </td>
+              <td>
+                <a href="/admin/updatetoy/<%= item._id %>">Edit</a>|
+                <a href="/admin/removetoy/<%= item._id %>">Remove</a>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+        </td>
+      </tr>
+      <tr style="height: 20"></tr>
+      <tr>
+        <td align="center" style="padding-top: 20">
+          <h2>Add Toy</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form method="POST" action="addtoy" enctype="multipart/form-data">
+            <table style="margin: auto">
+              <tr>
+                <td>Name</td>
+                <td>
+                  <input type="text" name="txtName" />
+                </td>
+              </tr>
+              <tr>
+                <td>Price</td>
+                <td>
+                  <input type="text" name="txtPrice" />
+                </td>
+              </tr>
+              <tr>
+                <td>Description</td>
+                <td>
+                  <textarea
+                    cols="40"
+                    rows="4"
+                    type="text"
+                    name="txtDescription"
+                  ></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td>Animal</td>
+                <td>
+                  <input type="text" name="txtAnimal" />
+                </td>
+              </tr>
+              <tr>
+                <td>Image</td>
+                <td><input type="file" name="fileImage" /></td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td>
+                  <input type="submit" value="ADD NEW" />
+                </td>
+              </tr>
+            </table>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

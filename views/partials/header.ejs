@@ -1,0 +1,44 @@
+<nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="/home">
+        <h2 style="font-size: 56px; border-bottom: 1px solid;">Pets Plus +</h2>
+      </a>
+    </li>
+    <li>
+      <form action="/search" method="POST" id="formSearch">
+        <input type="text" name="txtSearch" placeholder="search..." />
+        <input type="submit" value="Search" />
+      </form>
+    </li>
+    <div align="right" class="nav right">
+      <li class="nav-item">
+        <a class="nav-link" href="/mycart"
+          >Cart
+          <p
+            style="background-color: orange; display: inline;padding:2px 4px;color: #fff;"
+          >
+            <%= (session.mycart) ? session.mycart.length : 0 %>
+          </p>
+        </a>
+      </li>
+      <% if(session.customer) {%>
+      <li class="nav-item" style="margin-top: 10px;">
+        <p>
+          hello <i><%= session.customer.name%></i> |
+          <a href="/logout">Logout</a>
+        </p>
+      </li>
+      <% } else { %>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">Signup</a>
+      </li>
+      <% } %>
+    </div>
+  </ul>
+</nav>

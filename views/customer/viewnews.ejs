@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <%- include("../partials/head.ejs") %>
+  </head>
+  <body>
+    <header>
+      <%- include("../partials/header.ejs") %>
+    </header>
+
+    <h2>NEWS DETAILS</h2>
+    <table>
+      <tr>
+        <td>
+          <img
+            src="data:image/jpg;base64,<%= news.image %>"
+            width="400"
+            height="400"
+          />
+        </td>
+        <td><%= news.title %><br /></td>
+      </tr>
+      <tr>
+        <td colspan="2">Nội dung: <%= news.content %></td>
+      </tr>
+    </table>
+
+    <footer>
+      <%- include("../partials/footer.ejs") %>
+    </footer>
+  </body>
+</html>

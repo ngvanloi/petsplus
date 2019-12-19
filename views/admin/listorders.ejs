@@ -1,0 +1,68 @@
+<htm>
+  <body>
+    <h1>ORDER LIST</h1>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>CustName</th>
+        <th>CustPhone</th>
+        <th>DateTime</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      <% for (var item of orders) { %>
+      <tr>
+        <td>
+          <a href="/admin/listorders?id=<%= item._id %>">
+            <%= item._id %>
+          </a>
+        </td>
+        <td><%= item.custName %></td>
+        <td><%= item.custPhone %></td>
+        <td><%= new Date(item.datetime).toLocaleString() %></td>
+        <td><%= item.total %></td>
+        <td><%= item.status %></td>
+        <td>
+          <a href="/admin/updateorder?id=<%= item._id %>&status=APPROVE"
+            >APPROVE</a
+          >
+          ||
+          <a href="/admin/updateorder?id=<%= item._id %>&status=CANCEL"
+            >CANCEL</a
+          >
+        </td>
+      </tr>
+      <% } %>
+    </table>
+
+    <% if (order) { %>
+    <h1>ORDER DETAILS</h1>
+    <table border="1">
+      <tr>
+        <th>ProductID</th>
+        <th>ProductName</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      <% for (var item of order.items) { %>
+      <tr>
+        <td><%= item.toy._id %></td>
+        <td><%= item.toy.name %></td>
+        <td>
+          <img
+            src="data:image/jpg;base64,<%= item.toy.image %>"
+            width="70"
+            height="70"
+          />
+        </td>
+        <td><%= item.toy.price %></td>
+        <td><%= item.quantity %></td>
+      </tr>
+      <% } %>
+    </table>
+
+    <% } %>
+  </body>
+</htm>

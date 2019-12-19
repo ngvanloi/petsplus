@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <%- include("../partials/head.ejs") %>
+  </head>
+  <body>
+    <header>
+      <%- include("../partials/header.ejs") %>
+    </header>
+    <table align="center">
+      <% if(searchs) { var nCols = 3; var nRows = Math.ceil(searchs.length /
+      nCols); for (var r = 0; r < nRows; r++) { %>
+      <tr>
+        <% for (var c = 0; c < nCols; c++) { if (r * nCols + c < searchs.length)
+        { var search = searchs[r * nCols + c]; %>
+        <td align="center">
+          <a href="/viewtoy/<%= search._id %>">
+            <img
+              src="data:image/jpg;base64,<%= search.image %>"
+              width="300"
+              height="300"
+            /><br />
+          </a>
+          <%= search.name %><br />
+          <%= search.price %><br />
+        </td>
+        <% } } %>
+      </tr>
+      <% } %> <% } else { %>
+      <h2>Not Found!</h2>
+      <% } %>
+    </table>
+
+    <footer>
+      <%- include("../partials/footer.ejs") %>
+    </footer>
+  </body>
+</html>
